@@ -1,0 +1,28 @@
+# You might need to reload the config to make the update work
+# This is the border width to start in a world
+started-border: 1
+# Where the plugin can only work
+enabled-worlds:
+  - example_world
+  - example_world2
+events:
+  # Expand the border every player level
+  playerexp: false
+  # Expand the border when a player eats.
+  playereat: false
+  # Expand the border every second, minute, and hour.
+  second: false
+  minute: false
+  hour: false
+  # EntityDamageEvent: Expand the border when a player takes damage.
+  playerdmg: false
+  # Expand the border when a mob is killed.
+  mobkill: false
+  # PlayerJoinEvent: Expand the border when a player joins.
+  playerjoin: false
+  # Expand the border when a block is broken.
+  blockbreak: false
+  # Expand the border when a player kills another player.
+  playerkill: false
+  # Expand the border when a player unlock a achievement
+  advancement: false

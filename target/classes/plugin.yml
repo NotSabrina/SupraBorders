@@ -1,0 +1,5 @@
+name: SupraBorders
+version: '1.0'
+main: me.supraborders.SupraBorders
+api-version: '1.20'
+authors: [Supramental]
