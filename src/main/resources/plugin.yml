@@ -3,3 +3,12 @@ version: '${project.version}'
 main: me.supraborders.SupraBorders
 api-version: '1.20'
 authors: [Supramental]
+commands:
+  restartborder:
+    description: Restarts the world border to the initial size
+    permission: supraborders.restart
+
+permissions:
+  supraborders.restart:
+    description: Allows restarting the world border
+    default: op

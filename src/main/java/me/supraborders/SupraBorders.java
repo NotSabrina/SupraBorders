@@ -16,6 +16,8 @@ import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +44,29 @@ public class SupraBorders extends JavaPlugin {
 
         registerEvents();
         startTimers();
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("restartborder")) {
+            if (sender instanceof Player && !sender.hasPermission("supraborders.restart")) {
+                sender.sendMessage("You do not have permission to use this command.");
+                return true;
+            }
+            restartBorders();
+            sender.sendMessage("Borders have been reset to the initial size.");
+            return true;
+        }
+        return false;
+    }
+
+    private void restartBorders() {
+        for (World world : Bukkit.getWorlds()) {
+            if (enabledWorlds.contains(world.getName())) {
+                WorldBorder worldBorder = world.getWorldBorder();
+                worldBorder.setSize(borderSize);
+            }
+        }
     }
 
     private void registerEvents() {
@@ -164,3 +189,5 @@ class PlayerEvents implements Listener {
         plugin.expandForEvent("advancement", event.getPlayer().getWorld(), 1);
     }
 }
+
+
